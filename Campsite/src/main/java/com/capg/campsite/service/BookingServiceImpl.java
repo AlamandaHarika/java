@@ -37,19 +37,8 @@ public class BookingServiceImpl implements BookingService {
 
 	@Override
 	public Booking addBooking(Booking booking) throws Exception {
-		if (bookingRepository.findById(booking.getBookingId()).isPresent()) {
-			throw new Exception("Booking already Done with id " + booking.getBookingId());
-		}
-		Booking b = null;
-		long days = ChronoUnit.DAYS.between(booking.getBookingDate(), LocalDate.now());
-		System.out.println(days);
-		if (days >= 30) {
-			b = bookingRepository.save(booking);
-		} else {
-			throw new Exception("Booking Has not Done before one month");
-		}
-		logger.info("add booking");
-		return b;
+		if(bookingRepository.findById(booking.getBookingId()).isPresent());
+		throw new Exception("Booking already Done with id "+ booking.getBookingId());
 	}
 
 	@Override
